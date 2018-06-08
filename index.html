@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Jameson Thies</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+    <style>
+      body{
+        margin: 0;
+      }
+
+      #App {
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      #app-left{
+        color: #fff;
+        float: left;
+        background-color: #000;
+        height: 100vh;
+        width: 140px;
+        position: fixed;
+      }
+
+      #app-left-item-main{
+        width: 100%;
+        padding-top: 12px;
+        padding-bottom: 0px;
+        padding-left: 12px;
+        padding-right: 12px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      #app-left-item-resume{
+        width: 100%;
+        padding-top: 12px;
+        padding-bottom: 0px;
+        padding-left: 12px;
+        padding-right: 12px;
+        font-size: 28px;
+        cursor: pointer;
+      }
+
+      #app-left-item-main:hover{
+        font-weight: bold;
+      }
+
+      #app-left-item-resume:hover{
+        font-weight: bold;s
+      }
+
+      #app-right{
+        position: absolute;
+        z-index: 1;
+        right: 0;
+        top: 0;
+        background: #ffffff;
+        width: calc(100% - 140px);
+      }
+
+      @media screen and (max-width:800px){
+        #main{
+          width: 90%;
+          margin: 0 auto;
+          margin-top: 0;
+        }
+
+      }
+      @media screen and (min-width:800px){
+        #main{
+          width: 600px;
+          margin: 0 auto;
+          margin-top: 10vh;
+        }
+
+      }
+
+      #main-header{
+        width: calc(100% - 36px);
+        padding-top: 18px;
+        padding-bottom: 18px;
+        word-wrap: break-word;
+        margin: auto;
+      }
+
+      #main-header-name{
+        font-size: 36px;
+      }
+
+      .main-header-item{
+        font-size: 20px;
+      }
+
+      #main-body{
+        width: calc(100%-36px);
+        border-top: 2px solid black;
+        padding: 18px;
+        font-size: 26px;
+        word-wrap: break-word;
+      }
+
+      #app-right-back{
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 140px;
+        bottom: 0;
+        z-index: 0;
+        background-color: white;
+      }
+
+      #resume{
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 140px;
+        bottom: 0;
+        z-index: -1;
+      }
+      .pdf-iframe{
+        height: calc(100vh - 8px);
+        width: calc(100% - 4px);
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function loadMain(){
+        document.getElementById("resume").style.zIndex = "-1";
+        document.getElementById("app-left-item-main").style.fontWeight = "bold";
+        document.getElementById("app-left-item-resume").style.fontWeight = "normal";
+      }
+
+      function loadResume(){
+        document.getElementById("resume").style.zIndex = "2";
+        document.getElementById("app-left-item-main").style.fontWeight = "normal";
+        document.getElementById("app-left-item-resume").style.fontWeight = "bold";
+      }
+
+      function boldMain(rzi){
+        if(rzi === "2"){
+          document.getElementById("app-left-item-main").style.fontWeight = "bold";
+        }
+      }
+
+      function normalMain(rzi){
+        if(rzi === "2"){
+          document.getElementById("app-left-item-main").style.fontWeight = "normal";
+        }
+      }
+
+      function boldResume(rzi){
+        if(rzi === "-1"){
+          document.getElementById("app-left-item-resume").style.fontWeight = "bold";
+        }
+      }
+
+      function normalResume(rzi){
+        if(rzi === "-1"){
+          document.getElementById("app-left-item-resume").style.fontWeight = "normal";
+        }
+      }
+
+    </script>
+    <div id="App">
+      <div id="app-left">
+        <div id="app-left-item-main" onclick="loadMain()" onmouseenter="boldMain(document.getElementById('resume').style.zIndex)" onmouseleave="normalMain(document.getElementById('resume').style.zIndex)">
+          Main
+        </div>
+        <div id="app-left-item-resume" onclick="loadResume()" onmouseenter="boldResume(document.getElementById('resume').style.zIndex)" onmouseleave="normalResume(document.getElementById('resume').style.zIndex)">
+          Resume
+        </div>
+      </div>
+      <div id="app-right">
+        <div id="main">
+          <div id="main-header">
+            <div id="main-header-name">Jameson Thies</div>
+            <div class="main-header-item">Email: jamesonthies@gmail.com</div>
+            <div class="main-header-item">LinkedIn: <a href="https://www.linkedin.com/in/jamesonthies/">/in/jamesonthies/</a></div>
+            <div class="main-header-item">Github: <a href="https://github.com/jamesonthies">/jamesonthies/</a></div>
+          </div>
+          <div id="main-body">
+            Hello. I am a computer engineer primarily interested in parallel processing architectures and applications. With funding from the Center for Sensorimotor Neural Engineering, I am currently working as a Research Assistant in the VLSI Design and Test Laboratory at San Diego State University (SDSU). I graduated from SDSU with a BS in Computer Engineering May 2018. This September I will begin the MS in Electrical and Computer Engineering program at UC Davis.
+          </div>
+        </div>
+      </div>
+      <div id="app-right-back">
+      </div>
+      <div id="resume">
+        <iframe class="pdf-iframe" src="Jameson Thies CV.pdf" />
+      </div>
+    </div>
+  </body>
+</html>
